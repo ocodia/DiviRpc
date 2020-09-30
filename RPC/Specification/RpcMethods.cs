@@ -12,7 +12,7 @@ namespace DiviSharp.RPC.Specification
         //getblock,
         //getblockchaininfo,
         //getblockcount,
-        //getblockhash,
+        getblockhash,
         //getblockheader,
         //getchaintips,
         //getdifficulty,

@@ -12,15 +12,19 @@ namespace DiviSharp.RPC.Connector
 {
     public class RpcConnector
     {
-        public RpcConnector() { }
+        private RpcConnection _rpcConnection;
+
+        public RpcConnector(RpcConnection rpcConnection) {
+            _rpcConnection = rpcConnection;
+        }
 
 
-        public T MakeRequest<T>(RpcConnection rpcConnection, RpcMethods rpcMethod, params object[] parameters)
+        public T MakeRequest<T>(RpcMethods rpcMethod, params object[] parameters)
         {
 
-            string rpcDaemonUrl = rpcConnection.Url;
-            string rpcUserName = rpcConnection.Username;
-            string rpcPassword = rpcConnection.Password;
+            string rpcDaemonUrl = _rpcConnection.Url;
+            string rpcUserName = _rpcConnection.Username;
+            string rpcPassword = _rpcConnection.Password;
 
             var jsonRpcRequest = new JsonRpcRequest(1, rpcMethod.ToString(), parameters);
             var webRequest = (HttpWebRequest)WebRequest.Create(rpcDaemonUrl);
