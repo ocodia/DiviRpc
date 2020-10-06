@@ -4,14 +4,14 @@ using DiviSharp.RPC.Specification;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DiviSharp
+namespace DiviSharp.Services
 {
-    public class DiviSharpService
+    public class DiviSharpRPCService
     {
 
         protected readonly RpcConnector _rpcConnector;
 
-        public DiviSharpService(RpcConnection rpcConnection)
+        public DiviSharpRPCService(RpcConnection rpcConnection)
         {
             _rpcConnector = new RpcConnector(rpcConnection);
         }
@@ -53,7 +53,7 @@ namespace DiviSharp
         public Task<List<ListTransactionsResponse>> ListTransactions(string account)
         {
 
-            var accounts = _rpcConnector.MakeRequest<List<ListTransactionsResponse>>(RpcMethods.listtransactions, (string.IsNullOrWhiteSpace(account) ? "*" : account));
+            var accounts = _rpcConnector.MakeRequest<List<ListTransactionsResponse>>(RpcMethods.listtransactions, string.IsNullOrWhiteSpace(account) ? "*" : account);
 
             return Task.FromResult(accounts);
         }
@@ -83,7 +83,7 @@ namespace DiviSharp
 
         public Task<string> GetReceivedByAccount(string account)
         {
-            var stakingstatus = _rpcConnector.MakeRequest<string>(RpcMethods.getreceivedbyaccount, (string.IsNullOrWhiteSpace(account) ? "" : account));
+            var stakingstatus = _rpcConnector.MakeRequest<string>(RpcMethods.getreceivedbyaccount, string.IsNullOrWhiteSpace(account) ? "" : account);
 
             return Task.FromResult(stakingstatus);
         }
