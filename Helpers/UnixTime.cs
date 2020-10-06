@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DiviSharp.Tools
+namespace DiviSharp.Helpers
 {
     public static class UnixTime
     {

@@ -1,4 +1,4 @@
-﻿using DiviSharp.Exceptions;
+﻿using DiviSharp.RPC.Exceptions;
 using DiviSharp.RPC.RequestResponse;
 using DiviSharp.RPC.Specification;
 using System;
