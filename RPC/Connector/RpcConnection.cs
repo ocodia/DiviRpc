@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DiviSharp.RPC.Connector
+﻿namespace DiviSharp.RPC.Connector
 {
     public class RpcConnection
     {

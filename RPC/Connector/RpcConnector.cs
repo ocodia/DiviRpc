@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using DiviSharp.Exceptions;
+using DiviSharp.RPC.RequestResponse;
+using DiviSharp.RPC.Specification;
 using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using DiviSharp.Exceptions;
-using DiviSharp.RPC.RequestResponse;
-using DiviSharp.RPC.Specification;
+using System.Text.Json;
 
 namespace DiviSharp.RPC.Connector
 {
@@ -69,7 +69,12 @@ namespace DiviSharp.RPC.Connector
                     }
                 }
 
-                var rpcResponse = JsonConvert.DeserializeObject<JsonRpcResponse<T>>(json);
+                JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                };
+
+                var rpcResponse = JsonSerializer.Deserialize<JsonRpcResponse<T>>(json, jsonSerializerOptions);
                 return rpcResponse.Result;
 
             }
@@ -99,7 +104,7 @@ namespace DiviSharp.RPC.Connector
 
                                     try
                                     {
-                                        var jsonRpcResponseObject = JsonConvert.DeserializeObject<JsonRpcResponse<object>>(result);
+                                        var jsonRpcResponseObject = JsonSerializer.Deserialize<JsonRpcResponse<object>>(result);
 
                                         var internalServerErrorException = new RpcInternalServerErrorException(jsonRpcResponseObject.Error.Message, webException)
                                         {

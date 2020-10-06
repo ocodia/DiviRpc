@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Reflection.Metadata;
-using System.Text;
+﻿using System.Text.Json.Serialization;
 
 namespace DiviSharp.Responses
 {
@@ -13,7 +9,7 @@ namespace DiviSharp.Responses
         public int OutIdx { get; set; }
         public string Status { get; set; }
 
-        [JsonProperty("addr")]
+        [JsonPropertyName("addr")]
         public string Address { get; set; }
         public int Version { get; set; }
         public double LastSeen { get; set; }

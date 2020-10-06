@@ -1,17 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using DiviSharp.RPC.Specification;
+﻿using DiviSharp.RPC.Specification;
+using System.Text.Json.Serialization;
 
 namespace DiviSharp.RPC.RequestResponse
 {
     public class JsonRpcError
     {
-        [JsonProperty(PropertyName = "code")]
+        
+        [JsonPropertyName("code")]
         public RpcErrorCode Code { get; set; }
 
-        [JsonProperty(PropertyName = "message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
     }
 }

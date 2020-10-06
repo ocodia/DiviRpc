@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace DiviSharp.Responses
 {
@@ -14,7 +11,7 @@ namespace DiviSharp.Responses
         public bool EnoughCoins { get; set; }
         public bool Mnsync { get; set; }
 
-        [JsonProperty("staking status")]
+        [JsonPropertyName("staking status")]
         public bool StakingStatus { get; set; }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DiviSharp.ExtensionMethods
+﻿namespace DiviSharp.ExtensionMethods
 {
     public static class StringExtensionMethods
     {

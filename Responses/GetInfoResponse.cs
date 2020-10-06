@@ -1,15 +1,18 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DiviSharp.RPC.JsonConverters;
+using System.Text.Json.Serialization;
 
 namespace DiviSharp.Responses
 {
     public class GetInfoResponse
     {
         public string Version { get; set; }
+
+        [JsonConverter(typeof(NumberToStringConverter))]
         public string ProtocolVersion { get; set; }
+
+        [JsonConverter(typeof(NumberToStringConverter))]
         public string WalletVersion { get; set; }
+
         public decimal Balance { get; set; }
         public double Blocks { get; set; }
         public double TimeOffset { get; set; }
@@ -23,13 +26,13 @@ namespace DiviSharp.Responses
         public double KeyPoolOldest { get; set; }
         public double KeyPoolSize { get; set; }
 
-        [JsonProperty("unlocked_until")]
+        [JsonPropertyName("unlocked_until")]
         public ulong UnlockedUntil { get; set; }
 
         public decimal PayTxFee { get; set; }
         public decimal RelayFee { get; set; }
 
-        [JsonProperty("staking status")]
+        [JsonPropertyName("staking status")]
         public string StakingStatus { get; set; }
         
         public string Errors { get; set; }

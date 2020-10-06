@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace DiviSharp.RPC.RequestResponse
 {
@@ -15,18 +15,18 @@ namespace DiviSharp.RPC.RequestResponse
             Parameters = parameters?.ToList() ?? new List<object>();
         }
 
-        [JsonProperty(PropertyName = "method", Order = 0)]
+        [JsonPropertyName("method")]
         public string Method { get; set; }
 
-        [JsonProperty(PropertyName = "params", Order = 1)]
+        [JsonPropertyName("params")]
         public IList<object> Parameters { get; set; }
 
-        [JsonProperty(PropertyName = "id", Order = 2)]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
         public byte[] GetBytes()
         {
-            var json = JsonConvert.SerializeObject(this);
+            var json = JsonSerializer.Serialize(this);
             return Encoding.UTF8.GetBytes(json);
         }
     }

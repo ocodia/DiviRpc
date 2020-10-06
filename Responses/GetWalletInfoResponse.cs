@@ -1,30 +1,29 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DiviSharp.RPC.JsonConverters;
+using System.Text.Json.Serialization;
 
 namespace DiviSharp.Responses
 {
     public class GetWalletInfoResponse
     {
+        [JsonConverter(typeof(NumberToStringConverter))]
         public string WalletVersion { get; set; }
         public decimal Balance { get; set; }
 
-        [JsonProperty("unconfirmed_balance")]
+        [JsonPropertyName("unconfirmed_balance")]
         public decimal UnconfirmedBalance { get; set; }
 
-        [JsonProperty("immature_balance")]
+        [JsonPropertyName("immature_balance")]
         public decimal ImmatureBalance { get; set; }
 
         public ulong TxCount { get; set; }
         public double KeyPoolOldest { get; set; }
 
-        [JsonProperty("unlocked_until")]
+        [JsonPropertyName("unlocked_until")]
         public ulong UnlockedUntil { get; set; }
 
         public ulong KeyPoolSize { get; set; }
 
-        [JsonProperty("encryption_status")]
+        [JsonPropertyName("encryption_status")]
         public string EncryptionStatus { get; set; }
     }
 }

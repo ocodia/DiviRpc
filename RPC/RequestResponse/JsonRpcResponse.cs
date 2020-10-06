@@ -1,19 +1,16 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text.Json.Serialization;
 
 namespace DiviSharp.RPC.RequestResponse
 {
     public class JsonRpcResponse<T>
     {
-        [JsonProperty(PropertyName = "result", Order = 0)]
+        [JsonPropertyName("result")]
         public T Result { get; set; }
 
-        [JsonProperty(PropertyName = "id", Order = 1)]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
-        [JsonProperty(PropertyName = "error", Order = 2)]
+        [JsonPropertyName("error")]
         public JsonRpcError Error { get; set; }
     }
 }

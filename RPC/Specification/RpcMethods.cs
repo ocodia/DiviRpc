@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DiviSharp.RPC.Specification
+﻿namespace DiviSharp.RPC.Specification
 {
     public enum RpcMethods
     {
