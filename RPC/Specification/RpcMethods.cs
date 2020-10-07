@@ -5,9 +5,9 @@
         //== Blockchain ==
 
         //getbestblockhash,
-        //getblock,
-        //getblockchaininfo,
-        //getblockcount,
+        getblock,
+        getblockchaininfo,
+        getblockcount,
         getblockhash,
         //getblockheader,
         //getchaintips,

@@ -24,6 +24,24 @@ namespace DiviSharp.Services
             return Task.FromResult(response);
         }
 
+        public Task<int> GetBlockCount()
+        {
+            int response = _rpcConnector.MakeRequest<int>(RpcMethods.getblockcount);
+            return Task.FromResult(response);
+        }
+
+        public Task<GetBlockResponse> GetBlock(string hash)
+        {
+            GetBlockResponse response = _rpcConnector.MakeRequest<GetBlockResponse>(RpcMethods.getblock, new object[]{ hash, true });
+            return Task.FromResult(response);
+        }
+
+        public Task<GetBlockchainInfoResponse> GetBlockchainInfo()
+        {
+            GetBlockchainInfoResponse response = _rpcConnector.MakeRequest<GetBlockchainInfoResponse>(RpcMethods.getblockchaininfo, new object[] { });
+            return Task.FromResult(response);
+        }
+
         #endregion
 
         public Task<GetInfoResponse> GetInfo()
