@@ -4,23 +4,125 @@ DiviSharp is a .NET Class Library for interacting with the [Divi Project](https:
 
 ## How to use
 
-Define the RPC connection details (remember to use your own RPC username, password and URL details)
+Create a new instance of the DiviSharpRPCService with your RPC connection details
 
 ```
 
-RpcConnection rpcConnection = new RpcConnection();
-rpcConnection.Username = "diviRpcUsername";
-rpcConnection.Password = "diviRpcPassword";
-rpcConnection.Url = "diviRpcUrl";
-```
+DiviSharpRPCService divi = new DiviSharpRPCService(new RpcConnection()
+{
+    Username = "",
+    Password = "",
+    Url = ""
+});
 
-Create a new instance of the DiviSharpRPCService with those connection details
-
-```
-DiviSharpRPCService diviSharpRPCService = new DiviSharpRPCService(rpcConnection);
 ```
 
 Use the DiviSharpRPCService to get info from the daemon
 ```
-GetInfoResponse getinfo = await diviSharpService.GetInfo();
+GetInfoResponse getinfo = await divi.GetInfo();
 ```
+
+## Capabilities
+
+I hope to include most of these, but only the ones with ✅ have been done so far.
+
+### Blockchain
+
+* getbestblockhash 
+* getblock ✅
+* getblockchaininfo	✅
+* getblockcount	✅
+* getblockhash	✅
+* getblockheader
+* getchaintips
+* getdifficulty
+* getmempoolinfo
+* getrawmempool
+* gettxout
+* gettxoutsetinfo
+* verifychain
+
+### Control
+
+* getinfo ✅
+* help
+* stop
+
+### Network
+
+* addnode
+* getaddednodeinfo
+* getconnectioncount
+* getnettotals
+* getnetworkinfo
+* getpeerinfo
+* ping
+
+### Masternodes
+
+* allocatefunds
+* fundmasternode
+* startmasternode
+* getmasternodecount
+* getmasternodestatus
+* getmasternodewinners
+* listmasternodes ✅
+* masternodeconnect
+* mnsync
+* spork
+
+### Utilities
+
+* createmultisig
+* estimatefee
+* estimatepriority
+* estimatesmartfee
+* estimatesmartpriority
+* validateaddress
+* mirroraddress
+* verifymessage
+
+### Wallet
+
+* addmultisigaddress
+* autocombinerewards
+* backupwallet
+* bip38decrypt
+* bip38encrypt
+* dumpprivkey
+* dumpwallet
+* getaccount
+* getaccountaddress
+* getaddressesbyaccount      
+* getbalance
+* getnewaddress
+* getrawchangeaddress
+* getreceivedbyaccount ✅
+* getreceivedbyaddress
+* getstakesplitthreshold
+* getstakingstatus ✅
+* gettransaction
+* getunconfirmedbalance
+* getwalletinfo ✅
+* importaddress
+* importprivkey
+* importwallet
+* keypoolrefill
+* listaccounts ✅
+* listaddressgroupings ✅
+* listlockunspent
+* listreceivedbyaccount
+* listreceivedbyaddress
+* listsinceblock
+* listtransactions ✅
+* listunspent ✅
+* lockunspent
+* sendfrom
+* sendmany
+* sendtoaddress
+* setaccount
+* settxfee
+* signmessage
+* walletlock
+* walletpassphrase
+* walletpassphrasechange
