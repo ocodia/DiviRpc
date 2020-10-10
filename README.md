@@ -28,19 +28,19 @@ I hope to include most of these, but only the ones with ✅ have been done so fa
 
 ### Blockchain
 
-* getbestblockhash 
+* getbestblockhash ✅
 * getblock ✅
 * getblockchaininfo	✅
 * getblockcount	✅
 * getblockhash	✅
-* getblockheader
-* getchaintips
-* getdifficulty
+* getblockheader ✅
+* getchaintips ✅
+* getdifficulty ✅
 * getmempoolinfo
 * getrawmempool
-* gettxout
-* gettxoutsetinfo
-* verifychain
+* gettxout ✅
+* gettxoutsetinfo ✅
+* verifychain ✅
 
 ### Control
 

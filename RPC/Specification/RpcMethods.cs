@@ -4,19 +4,19 @@
     {
         //== Blockchain ==
 
-        //getbestblockhash,
+        getbestblockhash,
         getblock,
         getblockchaininfo,
         getblockcount,
         getblockhash,
-        //getblockheader,
-        //getchaintips,
-        //getdifficulty,
+        getblockheader,
+        getchaintips,
+        getdifficulty,
         //getmempoolinfo,
         //getrawmempool,
-        //gettxout,
-        //gettxoutsetinfo,
-        //verifychain,
+        gettxout,
+        gettxoutsetinfo,
+        verifychain,
 
         //== Control ==
 

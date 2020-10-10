@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="ExtensionMethods\" />
+    <Folder Include="Responses\Network\" />
     <Folder Include="RPC\Connector\" />
     <Folder Include="RPC\Specification\" />
     <Folder Include="RPC\RequestResponse\" />

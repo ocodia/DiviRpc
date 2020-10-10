@@ -1,7 +1,7 @@
 ﻿using DiviSharp.RPC.JsonConverters;
 using System.Text.Json.Serialization;
 
-namespace DiviSharp.Responses
+namespace DiviSharp.Responses.Utilities
 {
     public class GetInfoResponse
     {
@@ -20,9 +20,9 @@ namespace DiviSharp.Responses
         public string Proxy { get; set; }
         public double Difficulty { get; set; }
         public bool Testnet { get; set; }
-        
+
         public decimal MoneySupply { get; set; }
-        
+
         public double KeyPoolOldest { get; set; }
         public double KeyPoolSize { get; set; }
 
@@ -34,7 +34,7 @@ namespace DiviSharp.Responses
 
         [JsonPropertyName("staking status")]
         public string StakingStatus { get; set; }
-        
+
         public string Errors { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using DiviSharp.RPC.JsonConverters;
 using System.Text.Json.Serialization;
 
-namespace DiviSharp.Responses
+namespace DiviSharp.Responses.Wallet
 {
     public class GetWalletInfoResponse
     {

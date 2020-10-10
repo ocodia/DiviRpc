@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DiviSharp.Responses
+namespace DiviSharp.Responses.Wallet
 {
     public class ListTransactionsResponse
     {

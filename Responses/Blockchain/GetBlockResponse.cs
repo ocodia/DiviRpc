@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace DiviSharp.Responses
+namespace DiviSharp.Responses.Blockchain
 {
     public abstract class GetBlockResponseBase
     {

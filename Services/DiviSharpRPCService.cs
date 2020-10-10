@@ -1,4 +1,7 @@
-﻿using DiviSharp.Responses;
+﻿using DiviSharp.Responses.Blockchain;
+using DiviSharp.Responses.Masternodes;
+using DiviSharp.Responses.Utilities;
+using DiviSharp.Responses.Wallet;
 using DiviSharp.RPC.Connector;
 using DiviSharp.RPC.Specification;
 using System.Collections.Generic;
@@ -6,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DiviSharp.Services
 {
-    public class DiviSharpRPCService
+    public class DiviSharpRPCService : IDiviSharpService
     {
 
         protected readonly RpcConnector _rpcConnector;
@@ -18,21 +21,15 @@ namespace DiviSharp.Services
 
         #region BlockChain
 
-        public Task<string> GetBlockHash(int block)
+        public Task<string> GetBestBlockHash()
         {
-            string response = _rpcConnector.MakeRequest<string>(RpcMethods.getblockhash, block);
-            return Task.FromResult(response);
-        }
-
-        public Task<int> GetBlockCount()
-        {
-            int response = _rpcConnector.MakeRequest<int>(RpcMethods.getblockcount);
+            string response = _rpcConnector.MakeRequest<string>(RpcMethods.getbestblockhash);
             return Task.FromResult(response);
         }
 
         public Task<GetBlockResponse> GetBlock(string hash)
         {
-            GetBlockResponse response = _rpcConnector.MakeRequest<GetBlockResponse>(RpcMethods.getblock, new object[]{ hash, true });
+            GetBlockResponse response = _rpcConnector.MakeRequest<GetBlockResponse>(RpcMethods.getblock, new object[] { hash, true });
             return Task.FromResult(response);
         }
 
@@ -42,8 +39,69 @@ namespace DiviSharp.Services
             return Task.FromResult(response);
         }
 
+        public Task<int> GetBlockCount()
+        {
+            int response = _rpcConnector.MakeRequest<int>(RpcMethods.getblockcount);
+            return Task.FromResult(response);
+        }
+
+        public Task<string> GetBlockHash(int block)
+        {
+            string response = _rpcConnector.MakeRequest<string>(RpcMethods.getblockhash, block);
+            return Task.FromResult(response);
+        }
+
+        public Task<GetBlockHeaderResponse> GetBlockHeader(string hash)
+        {
+            GetBlockHeaderResponse response = _rpcConnector.MakeRequest<GetBlockHeaderResponse>(RpcMethods.getblockheader, new object[] { hash, true });
+            return Task.FromResult(response);
+        }
+
+        public Task<List<GetChainTipsResponse>> GetChainTips()
+        {
+            var response = _rpcConnector.MakeRequest<List<GetChainTipsResponse>>(RpcMethods.getchaintips, new object[] { });
+            return Task.FromResult(response);
+        }
+
+        public Task<double> GetDifficulty()
+        {
+            double response = _rpcConnector.MakeRequest<int>(RpcMethods.getdifficulty);
+            return Task.FromResult(response);
+        }
+
+        public Task<GetTxOutResponse> GetTxOut(string tx, int vout)
+        {
+            var response = _rpcConnector.MakeRequest<GetTxOutResponse>(RpcMethods.gettxout, new object[] { tx, vout });
+            return Task.FromResult(response);
+        }
+
+        public Task<GetTxOutSetInfoResponse> GetTxOutSetInfo()
+        {
+            var response = _rpcConnector.MakeRequest<GetTxOutSetInfoResponse>(RpcMethods.gettxout, new object[] { });
+            return Task.FromResult(response);
+        }
+
+        public Task<bool> VerifyChain()
+        {
+            bool response = _rpcConnector.MakeRequest<bool>(RpcMethods.verifychain, new object[] { });
+            return Task.FromResult(response);
+        }
+
         #endregion
 
+        #region Masternodes
+
+        public Task<List<ListMasternodesResponse>> ListMasternodes()
+        {
+
+            var masternodes = _rpcConnector.MakeRequest<List<ListMasternodesResponse>>(RpcMethods.listmasternodes);
+
+            return Task.FromResult(masternodes);
+        }
+
+        #endregion
+
+        #region Utilities
         public Task<GetInfoResponse> GetInfo()
         {
 
@@ -52,6 +110,9 @@ namespace DiviSharp.Services
             return Task.FromResult(response);
         }
 
+        #endregion
+
+        #region Wallet
         public Task<GetWalletInfoResponse> GetWalletInfo()
         {
 
@@ -82,14 +143,6 @@ namespace DiviSharp.Services
             var unspent = _rpcConnector.MakeRequest<List<ListUnspentResponse>>(RpcMethods.listunspent);
 
             return Task.FromResult(unspent);
-        }
-
-        public Task<List<ListMasternodesResponse>> ListMasternodes()
-        {
-
-            var masternodes = _rpcConnector.MakeRequest<List<ListMasternodesResponse>>(RpcMethods.listmasternodes);
-
-            return Task.FromResult(masternodes);
         }
 
         public Task<GetStakingStatusResponse> GetStakingStatus()
@@ -145,5 +198,7 @@ namespace DiviSharp.Services
 
             return Task.FromResult(structuredResponse);
         }
+
+        #endregion
     }
 }
