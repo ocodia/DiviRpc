@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DiviSharp.RPC.JsonConverters
+namespace DiviSharp.JsonConverters
 {
     public class NumberToStringConverter : JsonConverter<string>
     {

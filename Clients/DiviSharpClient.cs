@@ -7,14 +7,14 @@ using DiviSharp.RPC.Specification;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DiviSharp.Services
+namespace DiviSharp.Clients
 {
-    public class DiviSharpRPCService : IDiviSharpService
+    public class DiviSharpClient : IDiviSharpClient
     {
 
         protected readonly RpcConnector _rpcConnector;
 
-        public DiviSharpRPCService(RpcConnection rpcConnection)
+        public DiviSharpClient(RpcConnection rpcConnection)
         {
             _rpcConnector = new RpcConnector(rpcConnection);
         }

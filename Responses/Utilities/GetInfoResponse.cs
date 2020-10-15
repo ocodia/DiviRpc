@@ -1,4 +1,4 @@
-﻿using DiviSharp.RPC.JsonConverters;
+﻿using DiviSharp.JsonConverters;
 using System.Text.Json.Serialization;
 
 namespace DiviSharp.Responses.Utilities

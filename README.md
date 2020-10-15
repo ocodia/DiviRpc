@@ -1,14 +1,14 @@
 ﻿# DiviSharp
 
-DiviSharp is a .NET Class Library for interacting with the [Divi Project](https://diviproject.org/) RPC client.
+DiviSharp is a client library to connect to the [Divi Project](https://diviproject.org/) RPC in C#.
 
 ## How to use
 
-Create a new instance of the DiviSharpRPCService with your RPC connection details
+Use the IDiviSharpClient interface to create a new DiviSharpClient with your RPC connection details:
 
 ```
 
-DiviSharpRPCService divi = new DiviSharpRPCService(new RpcConnection()
+IDiviSharpClient divi = new DiviSharpClient(new RpcConnection()
 {
     Username = "",
     Password = "",
@@ -17,12 +17,13 @@ DiviSharpRPCService divi = new DiviSharpRPCService(new RpcConnection()
 
 ```
 
-Use the DiviSharpRPCService to get info from the daemon
+Use the DiviSharp client to get info from the daemon
 ```
-GetInfoResponse getinfo = await divi.GetInfo();
+var getinfo = await divi.GetInfo();
+Console.WriteLine(getinfo.Blocks.ToString());
 ```
 
-## Capabilities
+## Methods
 
 I hope to include most of these, but only the ones with ✅ have been done so far.
 

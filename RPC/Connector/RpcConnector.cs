@@ -21,7 +21,7 @@ namespace DiviSharp.RPC.Connector
 
         public T MakeRequest<T>(RpcMethods rpcMethod, params object[] parameters)
         {
-
+            
             string rpcDaemonUrl = _rpcConnection.Url;
             string rpcUserName = _rpcConnection.Username;
             string rpcPassword = _rpcConnection.Password;
