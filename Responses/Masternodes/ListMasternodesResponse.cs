@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace DiviSharp.Responses.Masternodes
+namespace DiviRpc.Responses.Masternodes
 {
     public class ListMasternodesResponse
     {

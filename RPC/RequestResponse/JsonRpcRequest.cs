@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DiviSharp.RPC.RequestResponse
+namespace DiviRpc.RPC.RequestResponse
 {
     public class JsonRpcRequest
     {

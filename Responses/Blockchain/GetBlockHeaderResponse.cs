@@ -1,4 +1,4 @@
-﻿namespace DiviSharp.Responses.Blockchain
+﻿namespace DiviRpc.Responses.Blockchain
 {
     public class GetBlockHeaderResponse
     {

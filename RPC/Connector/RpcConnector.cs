@@ -1,6 +1,6 @@
-﻿using DiviSharp.RPC.Exceptions;
-using DiviSharp.RPC.RequestResponse;
-using DiviSharp.RPC.Specification;
+﻿using DiviRpc.RPC.Exceptions;
+using DiviRpc.RPC.RequestResponse;
+using DiviRpc.RPC.Specification;
 using System;
 using System.IO;
 using System.Linq;
@@ -8,20 +8,21 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 
-namespace DiviSharp.RPC.Connector
+namespace DiviRpc.RPC.Connector
 {
     public class RpcConnector
     {
         private RpcConnection _rpcConnection;
 
-        public RpcConnector(RpcConnection rpcConnection) {
+        public RpcConnector(RpcConnection rpcConnection)
+        {
             _rpcConnection = rpcConnection;
         }
 
 
         public T MakeRequest<T>(RpcMethods rpcMethod, params object[] parameters)
         {
-            
+
             string rpcDaemonUrl = _rpcConnection.Url;
             string rpcUserName = _rpcConnection.Username;
             string rpcPassword = _rpcConnection.Password;
@@ -89,37 +90,37 @@ namespace DiviSharp.RPC.Connector
                     switch (webResponse.StatusCode)
                     {
                         case HttpStatusCode.InternalServerError:
-                        {
-                            using (var stream = webResponse.GetResponseStream())
                             {
-                                if (stream == null)
+                                using (var stream = webResponse.GetResponseStream())
                                 {
-                                    throw new RpcException("The RPC request was either not understood by the server or there was a problem executing the request", webException);
-                                }
-
-                                using (var reader = new StreamReader(stream))
-                                {
-                                    var result = reader.ReadToEnd();
-                                    reader.Dispose();
-
-                                    try
+                                    if (stream == null)
                                     {
-                                        var jsonRpcResponseObject = JsonSerializer.Deserialize<JsonRpcResponse<object>>(result);
-
-                                        var internalServerErrorException = new RpcInternalServerErrorException(jsonRpcResponseObject.Error.Message, webException)
-                                        {
-                                            RpcErrorCode = jsonRpcResponseObject.Error.Code
-                                        };
-
-                                        throw internalServerErrorException;
+                                        throw new RpcException("The RPC request was either not understood by the server or there was a problem executing the request", webException);
                                     }
-                                    catch (JsonException)
+
+                                    using (var reader = new StreamReader(stream))
                                     {
-                                        throw new RpcException(result, webException);
+                                        var result = reader.ReadToEnd();
+                                        reader.Dispose();
+
+                                        try
+                                        {
+                                            var jsonRpcResponseObject = JsonSerializer.Deserialize<JsonRpcResponse<object>>(result);
+
+                                            var internalServerErrorException = new RpcInternalServerErrorException(jsonRpcResponseObject.Error.Message, webException)
+                                            {
+                                                RpcErrorCode = jsonRpcResponseObject.Error.Code
+                                            };
+
+                                            throw internalServerErrorException;
+                                        }
+                                        catch (JsonException)
+                                        {
+                                            throw new RpcException(result, webException);
+                                        }
                                     }
                                 }
                             }
-                        }
 
                         default:
                             throw new RpcException("The RPC request was either not understood by the server or there was a problem executing the request", webException);
@@ -149,7 +150,7 @@ namespace DiviSharp.RPC.Connector
             }
             catch (Exception exception)
             {
-                var queryParameters = jsonRpcRequest.Parameters.Cast<string>().Aggregate(string.Empty, (current, parameter) => current + (parameter + " "));
+                var queryParameters = jsonRpcRequest.Parameters.Cast<string>().Aggregate(string.Empty, (current, parameter) => current + parameter + " ");
                 throw new Exception($"A problem was encountered while calling MakeRpcRequest() for: {jsonRpcRequest.Method} with parameters: {queryParameters}. \nException: {exception.Message}");
             }
         }

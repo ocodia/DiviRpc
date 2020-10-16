@@ -1,20 +1,20 @@
-﻿using DiviSharp.Responses.Blockchain;
-using DiviSharp.Responses.Masternodes;
-using DiviSharp.Responses.Utilities;
-using DiviSharp.Responses.Wallet;
-using DiviSharp.RPC.Connector;
-using DiviSharp.RPC.Specification;
+﻿using DiviRpc.Responses.Blockchain;
+using DiviRpc.Responses.Masternodes;
+using DiviRpc.Responses.Utilities;
+using DiviRpc.Responses.Wallet;
+using DiviRpc.RPC.Connector;
+using DiviRpc.RPC.Specification;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DiviSharp.Clients
+namespace DiviRpc.Clients
 {
-    public class DiviSharpClient : IDiviSharpClient
+    public class DiviRpcClient : IDiviRpcClient
     {
 
         protected readonly RpcConnector _rpcConnector;
 
-        public DiviSharpClient(RpcConnection rpcConnection)
+        public DiviRpcClient(RpcConnection rpcConnection)
         {
             _rpcConnector = new RpcConnector(rpcConnection);
         }

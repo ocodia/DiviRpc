@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DiviSharp.ExtensionMethods
+namespace DiviRpc.ExtensionMethods
 {
     public static class DecimalExtensionMethods
     {

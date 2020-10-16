@@ -1,4 +1,4 @@
-﻿namespace DiviSharp.RPC.Specification
+﻿namespace DiviRpc.RPC.Specification
 {
     public enum RpcMethods
     {

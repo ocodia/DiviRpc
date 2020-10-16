@@ -1,11 +1,11 @@
-﻿using DiviSharp.RPC.Specification;
+﻿using DiviRpc.RPC.Specification;
 using System.Text.Json.Serialization;
 
-namespace DiviSharp.RPC.RequestResponse
+namespace DiviRpc.RPC.RequestResponse
 {
     public class JsonRpcError
     {
-        
+
         [JsonPropertyName("code")]
         public RpcErrorCode Code { get; set; }
 

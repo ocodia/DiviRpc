@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace DiviSharp.RPC.RequestResponse
+namespace DiviRpc.RPC.RequestResponse
 {
     public class JsonRpcResponse<T>
     {

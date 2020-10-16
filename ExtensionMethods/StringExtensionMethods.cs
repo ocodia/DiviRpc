@@ -1,4 +1,4 @@
-﻿namespace DiviSharp.ExtensionMethods
+﻿namespace DiviRpc.ExtensionMethods
 {
     public static class StringExtensionMethods
     {

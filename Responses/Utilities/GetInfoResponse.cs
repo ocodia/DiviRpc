@@ -1,7 +1,7 @@
-﻿using DiviSharp.JsonConverters;
+﻿using DiviRpc.JsonConverters;
 using System.Text.Json.Serialization;
 
-namespace DiviSharp.Responses.Utilities
+namespace DiviRpc.Responses.Utilities
 {
     public class GetInfoResponse
     {

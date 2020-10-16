@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using DiviSharp.RPC.Specification;
+using DiviRpc.RPC.Specification;
 
-namespace DiviSharp.RPC.Exceptions
+namespace DiviRpc.RPC.Exceptions
 {
     [Serializable]
     public class RpcInternalServerErrorException : Exception

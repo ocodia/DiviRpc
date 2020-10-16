@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DiviSharp.RPC.Exceptions
+namespace DiviRpc.RPC.Exceptions
 {
     [Serializable]
     public class RpcException : Exception

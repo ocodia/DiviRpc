@@ -1,13 +1,13 @@
-﻿using DiviSharp.Responses.Blockchain;
-using DiviSharp.Responses.Masternodes;
-using DiviSharp.Responses.Utilities;
-using DiviSharp.Responses.Wallet;
+﻿using DiviRpc.Responses.Blockchain;
+using DiviRpc.Responses.Masternodes;
+using DiviRpc.Responses.Utilities;
+using DiviRpc.Responses.Wallet;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DiviSharp.Clients
+namespace DiviRpc.Clients
 {
-    public interface IDiviSharpClient
+    public interface IDiviRpcClient
     {
         #region BlockChain
         Task<string> GetBestBlockHash();

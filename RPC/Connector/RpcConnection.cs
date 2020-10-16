@@ -1,4 +1,4 @@
-﻿namespace DiviSharp.RPC.Connector
+﻿namespace DiviRpc.RPC.Connector
 {
     public class RpcConnection
     {

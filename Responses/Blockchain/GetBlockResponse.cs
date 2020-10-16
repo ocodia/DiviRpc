@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DiviSharp.Responses.Blockchain
+namespace DiviRpc.Responses.Blockchain
 {
     public abstract class GetBlockResponseBase
     {

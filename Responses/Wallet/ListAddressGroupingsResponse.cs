@@ -1,4 +1,4 @@
-﻿namespace DiviSharp.Responses.Wallet
+﻿namespace DiviRpc.Responses.Wallet
 {
     public class ListAddressGroupingsResponse
     {
