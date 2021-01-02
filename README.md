@@ -8,7 +8,7 @@ Use the IDiviRpc interface to create a new DiviRpcClient with your RPC connectio
 
 ```
 
-IDiviRpc divi = new DiviRpcClient(new RpcConnection()
+IDiviRpcClient divi = new DiviRpcClient(new RpcConnection()
 {
     Username = "",
     Password = "",
